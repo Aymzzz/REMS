@@ -2,6 +2,8 @@ package user;
 
 import java.util.List;
 
+import realestate.RealEstate;
+
 public class Manager extends User {
     private List<RealEstate> realEstates;
 

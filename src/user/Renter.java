@@ -2,6 +2,8 @@ package user;
 
 import java.sql.Date;
 
+import realestate.RealEstate;
+
 public class Renter extends User {
     private RealEstate realEstate;
     private RenterType renterType;
