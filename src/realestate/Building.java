@@ -5,6 +5,15 @@ public class Building{
     private Studio[] studios;
     private int numberApts;
     private int numberStudios;
+    private String location;
+    // constructor for Building class
+    public Building(Apartment[] apartments, Studio[] studios, int numberApts, int numberStudios, String location) {
+        this.apartments = apartments;
+        this.studios = studios;
+        this.numberApts = numberApts;
+        this.numberStudios = numberStudios;
+        this.location = location;
+    }
     public Apartment[] getApartments() {
         return apartments;
     }
@@ -28,5 +37,11 @@ public class Building{
     }
     public void setNumberStudios(int numberStudios) {
         this.numberStudios = numberStudios;
+    }
+    public String getLocation(){
+        return location;
+    }
+    public void setLocation(String location){
+        this.location=location;
     }
 }
