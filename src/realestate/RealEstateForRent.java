@@ -1,22 +1,26 @@
 package realestate;
 
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 
 import user.Owner;
 import user.Renter;
 
 public class RealEstateForRent extends RealEstate{
-    public RealEstateForRent(int id, String type, Owner owner, ArrayList<Comment> comments, String location,
-            double price) {
-        super(id, type, owner, comments, location, price);
-    }
-
     private Date starDate;
     private Date endDate;
     private List<Renter> renters;  
     private RentalStatus status;
+
+    public RealEstateForRent(int id, String type, Owner owner, List<Comment> comments, String location, double price, Date startDate, Date endDate, List<Renter> renters, RentalStatus status) {
+        super(id, type, owner, comments, location, price);
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.renters = renters;
+        this.status = status;
+    }
+
+    
 
     public Date getStarDate() {
         return starDate;
