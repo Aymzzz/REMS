@@ -111,7 +111,18 @@ public class User {
     }
 
 
-    public void addComment(Comment comment){
+     public void addComment(Comment comment) {
+      
+        RealEstate property = realEstates.stream()
+            .filter(realEstate -> realEstate.getId() == comment.getPropertyId())
+            .findFirst()
+            .orElse(null);
+        
+        if (property != null) {
+            property.addComment(comment);
+            System.out.println("Comment added: " + comment.getText());
+        } else {
+            System.out.println("Property not found, cannot add comment.");
+        }
     }
-
 }
