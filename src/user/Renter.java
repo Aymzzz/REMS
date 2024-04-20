@@ -9,10 +9,14 @@ public class Renter extends User {
     private RenterType renterType;
 
     public void viewBookingHistory() {
+        
+          System.out.println("Booking history viewed.");
 
     }
 
     public void bookProperty(int propertyID, Date startDate, Date endDate) {
+        
+         System.out.println("Property " + propertyID + " booked from " + startDate + " to " + endDate + ".");
 
     }
 
@@ -25,6 +29,8 @@ public class Renter extends User {
     }
 
     public void cancelBooking(int propertyID) {
+
+        System.out.println("Booking for property ID " + propertyID + " has been cancelled.");
 
     }
 
