@@ -6,6 +6,8 @@ public class User {
     private int age;
     private String email;
     private String phone;
+    private List<RealEstate> realEstates = new ArrayList<>(); //  it is a list to store real estate listings
+    private List<Integer> bookmarkedProperties = new ArrayList<>(); // List to store property IDs
     
     // constructor 
     public User(int id, String name, int age, String email, String phone){
@@ -55,33 +57,59 @@ public class User {
         System.out.println("Phone: ", +Phone);
     }
 
-    public void updateProfile(){
+   public void updateProfile(String newName, int newAge, String newEmail, String newPhone) {
+        setName(newName);
+        setAge(newAge);
+        setEmail(newEmail);
+        setPhone(newPhone);
+        System.out.println("Profile has been updated.");
     }
+
 
     public void changeProfilePicture(){
     }
 
     public void deleteAccount(){
+        System.out.println("Account deleted.");
     }
 
     public void sendMessage(String message){
     }
 
     public void retrieveUserInfo(){
+        viewProfile();
     }
 
     public List<RealEstate> browseProperties(){
         return realEstate; 
     }
 
-    public void viewPropertyDetails(int propertyID){
+    public void viewPropertyDetails(int propertyID) {
+        RealEstate property = realEstates.stream()
+            .filter(realEstate -> realEstate.getId() == propertyID)
+            .findFirst()
+            .orElse(null);
+        
+        if (property != null) {
+            System.out.println("Property Details: " + property.toString());
+        } else {
+            System.out.println("Property not found.");
+        }
     }
 
-    public void bookmarkProperty(int propertyID){
+    public void bookmarkProperty(int propertyID) {
+        if (!bookmarkedProperties.contains(propertyID)) {
+            bookmarkedProperties.add(propertyID);
+            System.out.println("Property bookmarked.");
+        } else {
+            System.out.println("Property already bookmarked.");
+        }
     }
 
-    public void contactOwner(int propertyID, String message){
+   public void contactOwner(int propertyID, String message) {
+        System.out.println("Message to owner of property ID " + propertyID + ": " + message);
     }
+
 
     public void addComment(Comment comment){
     }
