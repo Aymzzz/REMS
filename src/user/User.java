@@ -64,10 +64,56 @@ public class User {
         setPhone(newPhone);
         System.out.println("Profile has been updated.");
     }
+    public void updateName() {
+        System.out.println("Enter the new name: ");
+        String newName = scanner.nextLine();
 
-
-    public void changeProfilePicture(){
+        // Check if the new name already exists in the database (pseudo-method isNameExists)
+        if (isNameExists(newName)) {
+            System.out.println("Error: This name already exists.");
+        } else {
+            // If it doesn't exist, update the name
+            setName(newName);
+            System.out.println("Name updated successfully to: " + newName);
+        }
     }
+    public void updateAge() {
+        System.out.println("Enter the new age: ");
+        int newAge = scanner.nextInt();
+        scanner.nextLine(); // Consume newline left after nextInt()
+
+        // Update the age
+        setAge(newAge);
+        System.out.println("Age updated successfully to: " + newAge);
+    }
+    public void updateEmail() {
+        System.out.println("Enter the new email: ");
+        String newEmail = scanner.nextLine();
+
+        // Check if the new email already exists in the database (pseudo-method isEmailExists)
+        if (isEmailExists(newEmail)) {
+            System.out.println("Error: This email already exists.");
+        } else {
+            // If it doesn't exist, update the email
+            setEmail(newEmail);
+            System.out.println("Email updated successfully to: " + newEmail);
+        }
+    }
+     public void updatePhoneNumber() {
+        System.out.println("Enter the new phone number: ");
+        String newPhoneNumber = scanner.nextLine();
+
+        // Check if the new phone number already exists in the database (pseudo-method isPhoneNumberExists)
+        if (isPhoneNumberExists(newPhoneNumber)) {
+            System.out.println("Error: This phone number already exists.");
+        } else {
+            // If it doesn't exist, update the phone number
+            setPhoneNumber(newPhoneNumber);
+            System.out.println("Phone number updated successfully to: " + newPhoneNumber);
+        }
+    }
+    // add method isExists to check if they exist in the database 
+
 
     public void deleteAccount(){
         System.out.println("Account deleted.");
