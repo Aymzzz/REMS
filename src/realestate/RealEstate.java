@@ -4,46 +4,17 @@ import user.Owner;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class RealEstate {
-    private int id;
-    private String type;
+    protected int id;
+    protected String type;
     private Owner owner;
     private ArrayList<Comment> comments;
     private String location;
     private double price;
+    private RealEstateType reType;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public Owner getOwner() {
-        return owner;
-    }
-
-    public void setOwner(Owner owner) {
-        this.owner = owner;
-    }
-
-    public ArrayList<Comment> getComments() {
-        return comments;
-    }
-
-    public void setComments(ArrayList<Comment> comments) {
-        this.comments = comments;
-    }
 
     public RealEstate(int id, String type, Owner owner, ArrayList<Comment> comments, String location, double price) {
         this.id = id;
@@ -62,8 +33,26 @@ public class RealEstate {
         return price;
     }
 
-    public void addComment(Comment comment) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addComment'");
+    public void setPrice(double price) {
+        this.price = price;
     }
+
+
+    public enum RealEstateType{
+        Commercial, Residential;
+    }
+
+    public void addComment(Comment comment) throws IllegalArgumentException {
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.println("Enter the comment: ");
+            String content = scanner.nextLine();    
+            comment.postComment(content);
+        }
+        comments.add(comment);
+    }
+
+    public int getId(){
+        return id;
+    }
+
 }

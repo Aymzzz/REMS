@@ -20,13 +20,6 @@ public class BuyNow extends SaleType {
     }
 
     /**
-     * @param price the price to set
-     */
-    public void setPrice(float price) {
-        this.price = price;
-    }
-
-    /**
      * @return the buyer
      */
     public Buyer getBuyer() {

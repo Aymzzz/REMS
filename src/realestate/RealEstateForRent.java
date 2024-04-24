@@ -7,28 +7,26 @@ import user.Owner;
 import user.Renter;
 
 public class RealEstateForRent extends RealEstate{
-    private Date starDate;
+    private Date startDate;
     private Date endDate;
     private List<Renter> renters;  
     private RentalStatus status;
-    private Date startDate;
 
-    public RealEstateForRent(int id, String type, Owner owner, List<Comment> comments, String location, double price, Date startDate, Date endDate, List<Renter> renters, RentalStatus status) {
-        super(id, type, owner, comments, location, price);
+    public RealEstateForRent(int id, String type, Owner owner, List<Comment> comments, String location, double price, Date startDate, Date endDate, List<Renter> renters, RentalStatus status, RealEstateType reType) {
+        super(id, location, owner, null, location, price);
         this.startDate = startDate;
         this.endDate = endDate;
         this.renters = renters;
         this.status = status;
     }
-
     
 
-    public Date getStarDate() {
-        return starDate;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setStarDate(Date starDate) {
-        this.starDate = starDate;
+    public void setStartDate(Date starDate) {
+        this.startDate = starDate;
     }
 
     public Date getEndDate() {
@@ -57,5 +55,13 @@ public class RealEstateForRent extends RealEstate{
 
     public enum RentalStatus{
         Available, Rented;
+    }
+
+    public enum RealEstateType{
+        Commercial, Residential;
+    }
+
+    public String toString(){
+        return "Real estate for rent: " + startDate + ", endDate=" + endDate + ", renters=" + renters + ", status=" + status + "cost = " + getPrice();
     }
 }

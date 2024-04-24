@@ -8,6 +8,7 @@ import user.Manager;
 import user.User;
 
 public class RealEstateAgency {
+    
     private List<RealEstate> realEstates;
     private List<Manager> managers;
     private List<HouseKeeper> houseKeepers;
@@ -64,4 +65,6 @@ public class RealEstateAgency {
 
     public void removeRealEstate(RealEstate newRealEstate) {
     }
+
+
 }

@@ -44,11 +44,25 @@ public class Auction extends SaleType {
         return bids;
     }
 
+    public void displayBids(ArrayList<Bid> bids) {
+        for (int i = 0; i < bids.size(); i++) {
+            System.out.println(bids.get(i).getBidder().getName() + " bid " + bids.get(i).getAmount());
+        }
+    }
+
     public void addBid(Bid bid) {
         this.bids.add(bid);
     }
 
     public Buyer declareWinner() {
-        return null;
+        float maxBid = 0;
+        Buyer winner = null;
+        for (int i = 0; i < bids.size(); i++) {
+            if (bids.get(i).getAmount() > maxBid) {
+                maxBid = bids.get(i).getAmount();
+                winner = bids.get(i).getBidder();
+            }
+        }
+        return winner;
     }
 }

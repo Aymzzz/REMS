@@ -19,6 +19,7 @@ public class Buyer extends User {
     public void buyProperty() {
     }
 
+    public void buyerProperty() {
     public void proceedPayment() {
 
          System.out.println("Payment of $" + amount + " processed.");
