@@ -29,6 +29,11 @@ public class Comment {
         return commentID;
     }
 
+    /**
+     * Sets the comment ID of the comment.
+    *
+    * @param commentID The new comment ID.
+    */
     public void setCommentID(int commentID) {
         this.commentID = commentID;
     }
@@ -53,7 +58,16 @@ public class Comment {
         return content;
     }
 
+    /**
+     * Sets the content of the comment.
+     *
+     * @param content The new content of the comment.
+     * @throws IllegalArgumentException if the content is null or empty.
+     */
     public void setContent(String content) {
+        if (content == null || content.isEmpty()) {
+            throw new IllegalArgumentException("Error: Cannot post an empty comment.");
+        }
         this.content = content;
     }
 
@@ -65,34 +79,41 @@ public class Comment {
         this.replies = replies;
     }
 
-    // Methods
+    /**
+     * Method to post a new comment.
+     *
+     * @param content The content of the new comment.
+     * @throws IllegalArgumentException if the content is null or empty.
+     */
     public void postComment(String content) {
-        // Check if the content is not empty or null
-        //Set this as exception later!!!!
-        if (content != null && !content.isEmpty()) {
-            // Create a new Comment object with the current comment's content
-            Comment newComment = new Comment(-1, this.authorID, this.propertyID, content);
-            // Add the new Comment object to the replies list
-            this.replies.add(newComment);
-        } else {
-            System.out.println("Error: Cannot post an empty comment.");
+        if (content == null || content.isEmpty()) {
+            throw new IllegalArgumentException("Error: Cannot post an empty comment.");
         }
+        // Create a new Comment object with the current comment's content
+        Comment newComment = new Comment(-1, this.authorID, this.propertyID, content);
+        // Add the new Comment object to the replies list
+        this.replies.add(newComment);
     }
 
+    /**
+     * Method to reply to a comment.
+     *
+     * @param comment The comment to which the reply is being posted.
+     * @param content The content of the new reply.
+     * @throws IllegalArgumentException if the content is null or empty.
+     */
     public void reply(Comment comment, String content) {
-        // Check if the content is not empty or null
-        //Set this as exception later!!!!
-        if (content != null && !content.isEmpty()) {
-            // Create a new Comment object with the current comment's content
-            Comment newComment = new Comment(-1, this.authorID, this.propertyID, content);
-            // Set the new Comment object's parent Comment
-            newComment.setParentComment(this);
-            // Add the new Comment object to the parent Comment's replies list
-            this.replies.add(newComment);
-        } else {
-            System.out.println("Error: Cannot post an empty comment.");
+        if (content == null || content.isEmpty()) {
+            throw new IllegalArgumentException("Error: Cannot post an empty comment.");
         }
+        // Create a new Comment object with the current comment's content
+        Comment newComment = new Comment(-1, this.authorID, this.propertyID, content);
+        // Set the new Comment object's parent Comment
+        newComment.setParentComment(this);
+        // Add the new Comment object to the parent Comment's replies list
+        this.replies.add(newComment);
     }
+
     // Add a setParentComment method to the Comment class
     public void setParentComment(Comment parentComment) {
         this.propertyID = parentComment.getPropertyID();

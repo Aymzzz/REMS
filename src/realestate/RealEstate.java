@@ -54,6 +54,11 @@ public class RealEstate {
         Commercial, Residential;
     }
 
+    
+    /** 
+     * @param comment
+     * @throws IllegalArgumentException
+     */
     public void addComment(Comment comment) throws IllegalArgumentException {
         try (Scanner scanner = new Scanner(System.in)) {
             System.out.println("Enter the comment: ");
