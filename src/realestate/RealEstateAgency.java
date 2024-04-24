@@ -16,6 +16,10 @@ public class RealEstateAgency {
     private List<Comment> comments;
     private List<User> users;
 
+    
+    /** 
+     * @return List<Manager>
+     */
     public List<Manager> getManagers() {
         return managers;
     }

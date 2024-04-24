@@ -25,14 +25,26 @@ public class RealEstate {
         this.price = price;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getLocation() {
         return location;
     }
 
+    
+    /** 
+     * @return double
+     */
     public double getPrice() {
         return price;
     }
 
+    
+    /** 
+     * @param price
+     */
     public void setPrice(double price) {
         this.price = price;
     }

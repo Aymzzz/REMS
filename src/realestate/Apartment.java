@@ -6,6 +6,10 @@ public class Apartment{
     public Apartment(int id){
         this.apartmentID=id;
     }
+    
+    /** 
+     * @return int
+     */
     public int getApartmentID() {
         return apartmentID;
     }

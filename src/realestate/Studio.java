@@ -7,6 +7,10 @@ public class Studio{
         this.studioID=id;
         this.studioType=type;
     }
+    
+    /** 
+     * @return int
+     */
     public int getStudioID() {
         return studioID;
     }

@@ -21,10 +21,18 @@ public class RealEstateForRent extends RealEstate{
     }
     
 
+    
+    /** 
+     * @return Date
+     */
     public Date getStartDate() {
         return startDate;
     }
 
+    
+    /** 
+     * @param starDate
+     */
     public void setStartDate(Date starDate) {
         this.startDate = starDate;
     }

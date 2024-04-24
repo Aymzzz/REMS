@@ -24,6 +24,10 @@ public class User {
         this.email = email;
         this.phone = phone;
     }
+    
+    /** 
+     * @return int
+     */
     //getters and setters methods for existing attributes 
     public int getId() {
         return id;

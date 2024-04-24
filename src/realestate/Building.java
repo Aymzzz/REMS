@@ -14,6 +14,10 @@ public class Building{
         this.numberStudios = numberStudios;
         this.location = location;
     }
+    
+    /** 
+     * @return Apartment[]
+     */
     public Apartment[] getApartments() {
         return apartments;
     }

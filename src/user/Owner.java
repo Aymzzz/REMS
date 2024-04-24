@@ -15,6 +15,10 @@ public class Owner extends User {
     }
 
     
+    
+    /** 
+     * @return List<RealEstate>
+     */
     public List<RealEstate> getOwnedRealEstate() {
         return ownedRealEstate;
     }

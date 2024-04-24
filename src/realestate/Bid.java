@@ -9,6 +9,10 @@ public class Bid {
         this.amount = amount;
     }
 
+    
+    /** 
+     * @return Buyer
+     */
     public Buyer getBidder() {
         return bidder;
     }

@@ -20,6 +20,10 @@ public class Comment {
         this.replies = new ArrayList<>();
     }
 
+    
+    /** 
+     * @return int
+     */
     // Getters and Setters
     public int getCommentID() {
         return commentID;

@@ -12,6 +12,10 @@ public class Buyer extends User {
     public void placeBid() {
     }
 
+    
+    /** 
+     * @return double
+     */
     public double getBudget() {
         return budget;
     }

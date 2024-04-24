@@ -19,6 +19,12 @@ public class Renter extends User {
 
     }
 
+    
+    /** 
+     * @param propertyID
+     * @param startDate
+     * @param endDate
+     */
     public void bookProperty(int propertyID, Date startDate, Date endDate) {
         
          System.out.println("Property " + propertyID + " booked from " + startDate + " to " + endDate + ".");

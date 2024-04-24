@@ -12,6 +12,10 @@ public class Manager extends User {
 
     private List<RealEstate> realEstates;
 
+    
+    /** 
+     * @return List<RealEstate>
+     */
     public List<RealEstate> getRealEstates() {
         return realEstates;
     }

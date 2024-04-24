@@ -9,6 +9,10 @@ public class Account{
         this.password = password;
     }
 
+     
+     /** 
+      * @return String
+      */
      public String getUsername() {
         return username;
     }

@@ -16,6 +16,10 @@ public class Auction extends SaleType {
         this.bids = new ArrayList<>();
     }
 
+    
+    /** 
+     * @return float
+     */
     public float getStartingPrice() {
         return startingPrice;
     }
