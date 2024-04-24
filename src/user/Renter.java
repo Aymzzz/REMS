@@ -5,6 +5,11 @@ import java.sql.Date;
 import realestate.RealEstate;
 
 public class Renter extends User {
+    
+    public Renter(int id, String name, int age, String email, String phone) {
+        super(id, name, age, email, phone);
+    }
+
     private RealEstate realEstate;
     private RenterType renterType;
 

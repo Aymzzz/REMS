@@ -1,6 +1,7 @@
 package realestate;
 
 public class Apartment{
+    private static String ApartmentName = null;
     private int apartmentID;
     public Apartment(int id){
         this.apartmentID=id;

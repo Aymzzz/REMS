@@ -1,7 +1,9 @@
 package realestate;
+
 import user.Owner;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class RealEstate {
     private int id;
@@ -58,5 +60,10 @@ public class RealEstate {
 
     public double getPrice() {
         return price;
+    }
+
+    public void addComment(Comment comment) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'addComment'");
     }
 }

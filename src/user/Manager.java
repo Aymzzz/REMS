@@ -5,6 +5,11 @@ import java.util.List;
 import realestate.RealEstate;
 
 public class Manager extends User {
+    
+    public Manager(int id, String name, int age, String email, String phone) {
+        super(id, name, age, email, phone);
+    }
+
     private List<RealEstate> realEstates;
 
     public List<RealEstate> getRealEstates() {

@@ -1,5 +1,12 @@
 package user;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+import realestate.Comment;
+import realestate.RealEstate;
+
 public class User {
     private int id;
     private String name;
@@ -51,10 +58,10 @@ public class User {
 
     //methods
     public void viewProfile(){
-        System.out.println("Name: ", +name);
-        System.out.println("Age: ", + age);
-        System.out.println("Email: ", +email);
-        System.out.println("Phone: ", +Phone);
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+        System.out.println("Email: " + email);
+        System.out.println("Phone: " + phone);
     }
 
    public void updateProfile(String newName, int newAge, String newEmail, String newPhone) {
@@ -65,6 +72,7 @@ public class User {
         System.out.println("Profile has been updated.");
     }
     public void updateName() {
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the new name: ");
         String newName = scanner.nextLine();
 
@@ -78,6 +86,8 @@ public class User {
         }
     }
     public void updateAge() {
+
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the new age: ");
         int newAge = scanner.nextInt();
         scanner.nextLine(); // Consume newline left after nextInt()
@@ -87,6 +97,8 @@ public class User {
         System.out.println("Age updated successfully to: " + newAge);
     }
     public void updateEmail() {
+        Scanner scanner = new Scanner(System.in);
+
         System.out.println("Enter the new email: ");
         String newEmail = scanner.nextLine();
 
@@ -100,6 +112,7 @@ public class User {
         }
     }
      public void updatePhoneNumber() {
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the new phone number: ");
         String newPhoneNumber = scanner.nextLine();
 
@@ -108,13 +121,17 @@ public class User {
             System.out.println("Error: This phone number already exists.");
         } else {
             // If it doesn't exist, update the phone number
-            setPhoneNumber(newPhoneNumber);
+            setPhone(newPhoneNumber);
             System.out.println("Phone number updated successfully to: " + newPhoneNumber);
         }
     }
     // add method isExists to check if they exist in the database 
 
 
+    private boolean isPhoneNumberExists(String newPhoneNumber) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'isPhoneNumberExists'");
+    }
     public void deleteAccount(){
         System.out.println("Account deleted.");
     }
@@ -127,7 +144,7 @@ public class User {
     }
 
     public List<RealEstate> browseProperties(){
-        return realEstate; 
+        return realEstates; 
     }
 
     public void viewPropertyDetails(int propertyID) {
@@ -160,7 +177,7 @@ public class User {
      public void addComment(Comment comment) {
       
         RealEstate property = realEstates.stream()
-            .filter(realEstate -> realEstate.getId() == comment.getPropertyId())
+            .filter(realEstate -> realEstate.getId() == comment.getPropertyID())
             .findFirst()
             .orElse(null);
         

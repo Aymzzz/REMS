@@ -4,7 +4,7 @@ public class Studio{
     private int studioID;
     private String studioType;
     public Studio(int id, String type){
-        this.studioId=id;
+        this.studioID=id;
         this.studioType=type;
     }
     public int getStudioID() {

@@ -1,5 +1,6 @@
 package realestate;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Comment {
@@ -8,6 +9,7 @@ public class Comment {
     private int propertyID;
     private String content;
     private List<Comment> replies;
+    private String text;
 
     // Constructor
     public Comment(int commentID, int authorID, int propertyID, String content) {
@@ -90,5 +92,9 @@ public class Comment {
     // Add a setParentComment method to the Comment class
     public void setParentComment(Comment parentComment) {
         this.propertyID = parentComment.getPropertyID();
+    }
+
+    public String getText() {
+        return text;
     }
 }

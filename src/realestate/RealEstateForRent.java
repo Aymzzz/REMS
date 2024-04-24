@@ -11,6 +11,7 @@ public class RealEstateForRent extends RealEstate{
     private Date endDate;
     private List<Renter> renters;  
     private RentalStatus status;
+    private Date startDate;
 
     public RealEstateForRent(int id, String type, Owner owner, List<Comment> comments, String location, double price, Date startDate, Date endDate, List<Renter> renters, RentalStatus status) {
         super(id, type, owner, comments, location, price);

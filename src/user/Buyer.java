@@ -2,6 +2,7 @@ package user;
 
 public class Buyer extends User {
     private double budget;
+    private String amount;
 
      public Buyer(int id, String name, int age, String email, String phone, double budget) {
         super(id, name, age, email, phone);
