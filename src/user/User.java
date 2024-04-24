@@ -17,14 +17,15 @@ public class User {
     private List<Integer> bookmarkedProperties = new ArrayList<>(); // List to store property IDs
     
     // constructor 
-    public User(int id, String name, int age, String email, String phone){
+    public User(int id, String name, int age, String email, String phone2){
         this.id = id; 
         this.name = name;
         this.age = age; 
         this.email = email;
-        this.phone = phone;
+        this.phone = phone2;
     }
     
+
     /** 
      * @return int
      */
@@ -76,38 +77,41 @@ public class User {
         System.out.println("Profile has been updated.");
     }
     public void updateName() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the new name: ");
-        String newName = scanner.nextLine();
-        setName(newName);
-        System.out.println("Name updated successfully to: " + newName);
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.println("Enter the new name: ");
+            String newName = scanner.nextLine();
+            setName(newName);
+            System.out.println("Name updated successfully to: " + newName);
+        }
     }
     public void updateAge() {
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the new age: ");
-        int newAge = scanner.nextInt();
-        scanner.nextLine(); // Consume newline left after nextInt()
-        // Update the age
-        setAge(newAge);
-        System.out.println("Age updated successfully to: " + newAge);
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.println("Enter the new age: ");
+            int newAge = scanner.nextInt();
+            scanner.nextLine(); // Consume newline left after nextInt()
+            // Update the age
+            setAge(newAge);
+            System.out.println("Age updated successfully to: " + newAge);
+        }
     }
 
     public void updateEmail() {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Enter the new email: ");
-        String newEmail = scanner.nextLine();
-        setEmail(newEmail);
-        System.out.println("Email updated successfully to: " + newEmail);
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.println("Enter the new email: ");
+            String newEmail = scanner.nextLine();
+            setEmail(newEmail);
+            System.out.println("Email updated successfully to: " + newEmail);
+        }
     }
     
      public void updatePhoneNumber() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the new phone number: ");
-        String newPhoneNumber = scanner.nextLine();
-        setPhone(newPhoneNumber);
-        System.out.println("Phone number updated successfully to: " + newPhoneNumber);
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.println("Enter the new phone number: ");
+            String newPhoneNumber = scanner.nextLine();
+            setPhone(newPhoneNumber);
+            System.out.println("Phone number updated successfully to: " + newPhoneNumber);
+        }
     }
 
     public void deleteAccount(){
