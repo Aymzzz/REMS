@@ -75,15 +75,8 @@ public class User {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the new name: ");
         String newName = scanner.nextLine();
-
-        // Check if the new name already exists in the database (pseudo-method isNameExists)
-        if (isNameExists(newName)) {
-            System.out.println("Error: This name already exists.");
-        } else {
-            // If it doesn't exist, update the name
-            setName(newName);
-            System.out.println("Name updated successfully to: " + newName);
-        }
+        setName(newName);
+        System.out.println("Name updated successfully to: " + newName);
     }
     public void updateAge() {
 
@@ -91,47 +84,28 @@ public class User {
         System.out.println("Enter the new age: ");
         int newAge = scanner.nextInt();
         scanner.nextLine(); // Consume newline left after nextInt()
-
         // Update the age
         setAge(newAge);
         System.out.println("Age updated successfully to: " + newAge);
     }
+
     public void updateEmail() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Enter the new email: ");
         String newEmail = scanner.nextLine();
-
-        // Check if the new email already exists in the database (pseudo-method isEmailExists)
-        if (isEmailExists(newEmail)) {
-            System.out.println("Error: This email already exists.");
-        } else {
-            // If it doesn't exist, update the email
-            setEmail(newEmail);
-            System.out.println("Email updated successfully to: " + newEmail);
-        }
+        setEmail(newEmail);
+        System.out.println("Email updated successfully to: " + newEmail);
     }
+    
      public void updatePhoneNumber() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the new phone number: ");
         String newPhoneNumber = scanner.nextLine();
-
-        // Check if the new phone number already exists in the database (pseudo-method isPhoneNumberExists)
-        if (isPhoneNumberExists(newPhoneNumber)) {
-            System.out.println("Error: This phone number already exists.");
-        } else {
-            // If it doesn't exist, update the phone number
-            setPhone(newPhoneNumber);
-            System.out.println("Phone number updated successfully to: " + newPhoneNumber);
-        }
+        setPhone(newPhoneNumber);
+        System.out.println("Phone number updated successfully to: " + newPhoneNumber);
     }
-    // add method isExists to check if they exist in the database 
 
-
-    private boolean isPhoneNumberExists(String newPhoneNumber) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'isPhoneNumberExists'");
-    }
     public void deleteAccount(){
         System.out.println("Account deleted.");
     }
