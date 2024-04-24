@@ -3,7 +3,6 @@ package realestate;
 import user.Owner;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class RealEstate {
@@ -25,26 +24,14 @@ public class RealEstate {
         this.price = price;
     }
 
-    
-    /** 
-     * @return String
-     */
     public String getLocation() {
         return location;
     }
 
-    
-    /** 
-     * @return double
-     */
     public double getPrice() {
         return price;
     }
 
-    
-    /** 
-     * @param price
-     */
     public void setPrice(double price) {
         this.price = price;
     }
@@ -54,11 +41,6 @@ public class RealEstate {
         Commercial, Residential;
     }
 
-    
-    /** 
-     * @param comment
-     * @throws IllegalArgumentException
-     */
     public void addComment(Comment comment) throws IllegalArgumentException {
         try (Scanner scanner = new Scanner(System.in)) {
             System.out.println("Enter the comment: ");
@@ -70,6 +52,20 @@ public class RealEstate {
 
     public int getId(){
         return id;
+    }
+
+    /**
+     * @return the reType
+     */
+    public RealEstateType getReType() {
+        return reType;
+    }
+
+    /**
+     * @param reType the reType to set
+     */
+    public void setReType(RealEstateType reType) {
+        this.reType = reType;
     }
 
 }
