@@ -41,8 +41,11 @@ public class Manager extends User {
     }
 
     public void addRealEstate(RealEstate realEstate) {
-        realEstates.add(realEstate);
-        System.out.println("Real Estate listing added under manager " + getName() + ": " + realEstate.getName());
+        if (realEstate != null) {
+            realEstates.add(realEstate);
+            System.out.println("Real Estate listing added under manager " + getName() + ": " + realEstate.getName());
+        } else {
+            System.out.println("Real estate cannot be null.");
+        }
     }
-
 }
