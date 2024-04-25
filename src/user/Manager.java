@@ -38,4 +38,10 @@ public class Manager extends User {
         }
     }
     }
+
+    public void addRealEstate(RealEstate realEstate) {
+        realEstates.add(realEstate);
+        System.out.println("Real Estate listing added under manager " + getName() + ": " + realEstate.getName());
+    }
+
 }
