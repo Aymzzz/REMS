@@ -19,7 +19,14 @@ public class Buyer extends User {
     }
 
     public void buyProperty() {
+        if (pendingPaymentAmount > 0 && pendingPaymentAmount <= budget) {
+            System.out.println("Attempting to buy property for $" + pendingPaymentAmount);
+            proceedPayment(pendingPaymentAmount);
+        } else {
+            System.out.println("No pending transaction or budget exceeded.");
+        }
     }
+
 
     public void proceedPayment() {
 
