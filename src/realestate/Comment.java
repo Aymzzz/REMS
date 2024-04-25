@@ -93,6 +93,7 @@ public class Comment {
      *
      * @param content The content of the new comment.
      * @throws IllegalArgumentException if the content is null or empty.
+     * Author: Badr
      */
     public void postComment(String content) {
         if (content == null || content.isEmpty()) {
@@ -110,6 +111,7 @@ public class Comment {
      * @param comment The comment to which the reply is being posted.
      * @param content The content of the new reply.
      * @throws IllegalArgumentException if the content is null or empty.
+     * Author: Badr
      */
     public void reply(Comment comment, String content) {
         if (content == null || content.isEmpty()) {
