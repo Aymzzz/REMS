@@ -11,65 +11,31 @@ import java.util.Scanner;
  * @author SBAI Aymane
  */
 public class RealEstate {
-    protected int id;
-    protected String type;
+    private String name;
+    private int id;
     private Owner owner;
     private ArrayList<Comment> comments;
     private String location;
     private double price;
-    private RealEstateType reType; // this is for the type of real estate entity
+    private Unit[] units; // this is for the type of real estate entity
 
     /**
      * Constructs a new RealEstate object with the given parameters.
      *
      * @param id          the unique identifier for the real estate property
-     * @param type        the type of the real estate property
      * @param owner       the owner of the real estate property
      * @param comments    a list of comments associated with the real estate property
      * @param location    the location of the real estate property
      * @param price        the price of the real estate property
      */
-    public RealEstate(int id, String type, Owner owner, ArrayList<Comment> comments, String location, double price) {
+    public RealEstate(String name,int id, Owner owner, ArrayList<Comment> comments, String location, double price, Unit[] units) {
+        this.name=name;
         this.id = id;
-        this.type = type;
         this.owner = owner;
         this.comments = comments;
         this.location = location;
         this.price = price;
-    }
-
-    /**
-     * Returns the location of the real estate property.
-     *
-     * @return the location of the real estate property
-     */
-    public String getLocation() {
-        return location;
-    }
-
-    /**
-     * Returns the price of the real estate property.
-     *
-     * @return the price of the real estate property
-     */
-    public double getPrice() {
-        return price;
-    }
-
-    /**
-     * Sets the price of the real estate property.
-     *
-     * @param price the new price of the real estate property
-     */
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    /**
-     * Enum representing the types of real estate properties.
-     */
-    public enum RealEstateType {
-        Commercial, Residential
+        this.units= units;
     }
 
     /**
@@ -84,33 +50,104 @@ public class RealEstate {
             String content = scanner.nextLine();    
             comment.postComment(content);
         }
-        comments.add(comment);
+        getComments().add(comment);
     }
 
     /**
-     * Returns the unique identifier for the real estate property.
-     *
-     * @return the unique identifier for the real estate property
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * @return the id
      */
     public int getId() {
         return id;
     }
 
     /**
-     * Returns the type of the real estate property.
-     *
-     * @return the type of the real estate property
+     * @param id the id to set
      */
-    public RealEstateType getReType() {
-        return reType;
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**
-     * Sets the type of the real estate property.
-     *
-     * @param reType the new type of the real estate property
+     * @return the owner
      */
-    public void setReType(RealEstateType reType) {
-        this.reType = reType;
+    public Owner getOwner() {
+        return owner;
+    }
+
+    /**
+     * @param owner the owner to set
+     */
+    public void setOwner(Owner owner) {
+        this.owner = owner;
+    }
+
+    /**
+     * @return the comments
+     */
+    public ArrayList<Comment> getComments() {
+        return comments;
+    }
+
+    /**
+     * @param comments the comments to set
+     */
+    public void setComments(ArrayList<Comment> comments) {
+        this.comments = comments;
+    }
+
+    /**
+     * @return the location
+     */
+    public String getLocation() {
+        return location;
+    }
+
+    /**
+     * @param location the location to set
+     */
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    /**
+     * @return the price
+     */
+    public double getPrice() {
+        return price;
+    }
+
+    /**
+     * @param price the price to set
+     */
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    /**
+     * @return the units
+     */
+    public Unit[] getUnits() {
+        return units;
+    }
+
+    /**
+     * @param units the units to set
+     */
+    public void setUnits(Unit[] units) {
+        this.units = units;
     }
 }
