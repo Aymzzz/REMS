@@ -15,6 +15,10 @@ import user.HouseKeeper;
 import user.Manager;
 import user.User;
 
+/**
+ *
+ * @author Badr
+ */
 public class RealEstateAgency implements Serializable{
     private ArrayList<RealEstate> realEstates;
     private ArrayList<Manager> managers;
@@ -23,53 +27,107 @@ public class RealEstateAgency implements Serializable{
     private ArrayList<Comment> comments;
     private ArrayList<User> users;
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Manager> getManagers() {
         return managers;
     }
 
+    /**
+     *
+     * @param managers
+     */
     public void setManagers(ArrayList<Manager> managers) {
         this.managers = managers;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<HouseKeeper> getHouseKeepers() {
         return houseKeepers;
     }
 
+    /**
+     *
+     * @param houseKeepers
+     */
     public void setHouseKeepers(ArrayList<HouseKeeper> houseKeepers) {
         this.houseKeepers = houseKeepers;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Contractor> getContractors() {
         return contractors;
     }
 
+    /**
+     *
+     * @param contractors
+     */
     public void setContractors(ArrayList<Contractor> contractors) {
         this.contractors = contractors;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Comment> getComments() {
         return comments;
     }
 
+    /**
+     *
+     * @param comments
+     */
     public void setComments(ArrayList<Comment> comments) {
         this.comments = comments;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<User> getUsers() {
         return users;
     }
 
+    /**
+     *
+     * @param users
+     */
     public void setUsers(ArrayList<User> users) {
         this.users = users;
     }
 
+    /**
+     *
+     * @param newRealEstate
+     */
     public void addRealEstate(RealEstate newRealEstate) {
         realEstates.add(newRealEstate);
     }
 
+    /**
+     *
+     * @param realEstateToRemove
+     */
     public void removeRealEstate(RealEstate realEstateToRemove) {
         realEstates.removeIf(realEstate -> realEstate.equals(realEstateToRemove));
     }
+
+    /**
+     *
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     public void saveRealEstates() throws FileNotFoundException, IOException{
         FileOutputStream f = new FileOutputStream("realestate.ser");
         ObjectOutputStream out = new ObjectOutputStream(f);
@@ -78,6 +136,14 @@ public class RealEstateAgency implements Serializable{
         f.close();
         
     };
+
+    /**
+     *
+     * @return realestates
+     * @throws FileNotFoundException
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public ArrayList<RealEstate> loadRealEstates() throws FileNotFoundException, IOException, ClassNotFoundException{
         FileInputStream fin = new FileInputStream("realestate.ser");
         ObjectInputStream in = new ObjectInputStream(fin);
@@ -87,12 +153,23 @@ public class RealEstateAgency implements Serializable{
         fin.close();
         return realestates;    
     }
-    public RealEstate search(ArrayList<RealEstate> realEstates, String RealEstateType, double minPrice, double maxPrice, String location) throws RuntimeException {
+
+    /**
+     *
+     * @param realEstates
+     * @param RealEstateType
+     * @param minPrice
+     * @param maxPrice
+     * @param location
+     * @return foundRealEstate
+     * @throws RuntimeException
+     */
+    public RealEstate search(ArrayList<RealEstate> realEstates, String name, double minPrice, double maxPrice, String location) throws RuntimeException {
     RealEstate foundRealEstate = null;
 
     for (RealEstate realEstate : realEstates) {
-        if (RealEstateType != null && !RealEstateType.equals(realEstate.getReType())) {
-            throw new RuntimeException("Invalid real estate type: " + RealEstateType);
+        if (name != null && !name.equals(realEstate.getName())) {
+            throw new RuntimeException("Invalid real estate type: " + name);
         }
 
         if (minPrice > realEstate.getPrice() || maxPrice < realEstate.getPrice()) {
@@ -114,12 +191,20 @@ public class RealEstateAgency implements Serializable{
     return foundRealEstate;
 }
 
-
-
+    /**
+     *
+     * @param realestates
+     * @return
+     */
     public ArrayList<RealEstate> sortRealEstates(ArrayList<RealEstate> realestates) {
     Collections.sort(realestates, (RealEstate o1, RealEstate o2) -> Double.compare(o1.getPrice(), o2.getPrice()));
     return realestates;
 }
+
+    /**
+     *
+     * @return
+     */
     @Override
 public String toString() {
     StringBuilder sb = new StringBuilder();
@@ -157,3 +242,4 @@ public String toString() {
     return sb.toString();
 }
 }
+
