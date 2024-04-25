@@ -9,9 +9,7 @@ public class Contractor extends User {
     }
 
     
-    public void bidForProject(String projectDetails, double bidAmount) {
-        System.out.println("Bid placed by Contractor " + getName() + " for project '" + projectDetails + "' with amount: $" + bidAmount);
-    }
+   
     
     public void updateWorkStatus(String projectDetails, String status) {
         System.out.println("Update from Contractor " + getName() + " for project '" + projectDetails + "': Status - " + status);
