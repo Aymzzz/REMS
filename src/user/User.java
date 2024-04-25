@@ -15,6 +15,8 @@ public class User {
     private String phone;
     private List<RealEstate> realEstates = new ArrayList<>(); //  it is a list to store real estate listings
     private List<Integer> bookmarkedProperties = new ArrayList<>(); // List to store property IDs
+    private List<Integer> likedProperties = new ArrayList<>();// list to strore liked property IDs
+    private List<Integer> dislikedProperties = new ArrayList<>();// List to store disliked property IDs
     
     // constructor 
     public User(int id, String name, int age, String email, String phone2){
@@ -168,6 +170,46 @@ public class User {
             System.out.println("Comment added: " + comment.getText());
         } else {
             System.out.println("Property not found, cannot add comment.");
+        }
+    }
+
+     public void likeProperty(int propertyID) {
+        if (!likedProperties.contains(propertyID) && !dislikedProperties.contains(propertyID)) {
+            likedProperties.add(propertyID);
+            System.out.println("Property ID " + propertyID + " added to liked properties.");
+        } else {
+            System.out.println("You have already liked or disliked property ID " + propertyID + ".");
+        }
+    }
+
+    public void dislikeProperty(int propertyID) {
+        if (!dislikedProperties.contains(propertyID) && !likedProperties.contains(propertyID)) {
+            dislikedProperties.add(propertyID);
+            System.out.println("Property ID " + propertyID + " added to disliked properties.");
+        } else {
+            System.out.println("You have already liked or disliked property ID " + propertyID + ".");
+        }
+    }
+
+    public void viewLikedProperties() {
+        if (likedProperties.isEmpty()) {
+            System.out.println("You have not liked any properties yet.");
+        } else {
+            System.out.println("Liked Properties:");
+            for (int propertyID : likedProperties) {
+                System.out.println("- Property ID: " + propertyID);
+            }
+        }
+    }
+
+    public void viewDislikedProperties() {
+        if (dislikedProperties.isEmpty()) {
+            System.out.println("You have not disliked any properties yet.");
+        } else {
+            System.out.println("Disliked Properties:");
+            for (int propertyID : dislikedProperties) {
+                System.out.println("- Property ID: " + propertyID);
+            }
         }
     }
 }
