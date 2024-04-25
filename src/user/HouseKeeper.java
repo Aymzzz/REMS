@@ -33,4 +33,15 @@ public class HouseKeeper extends User {
         }
     }
 
+  
+    // method to clean the assigned property
+     public void cleanProperty() {
+        if (assignedBuilding != null) {
+            System.out.println("Cleaning property: " + assignedBuilding.getName());
+        } else {
+            System.out.println("No property assigned for cleaning.");
+        }
+    }
+
+
    
