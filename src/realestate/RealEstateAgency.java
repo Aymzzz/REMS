@@ -81,6 +81,7 @@ public class RealEstateAgency implements Serializable{
     public ArrayList<RealEstate> loadRealEstates() throws FileNotFoundException, IOException, ClassNotFoundException{
         FileInputStream fin = new FileInputStream("realestate.ser");
         ObjectInputStream in = new ObjectInputStream(fin);
+        @SuppressWarnings("unchecked")
         ArrayList<RealEstate> realestates = (ArrayList<RealEstate>)in.readObject();
         in.close();
         fin.close();

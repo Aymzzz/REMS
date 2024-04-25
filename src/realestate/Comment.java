@@ -3,6 +3,15 @@ package realestate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The `Comment` class represents a comment made on a real estate property listing.
+ * It includes information about the comment such as its ID, the author ID, the property ID,
+ * the content, and any replies made to the comment. 
+ * The class provides methods to get and set the comment's properties, as well as methods to post and reply to comments.
+ * 
+ * Author: SBAI Aymane
+ */
+
 public class Comment {
     private int commentID;
     private int authorID;

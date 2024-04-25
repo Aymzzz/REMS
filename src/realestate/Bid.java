@@ -1,5 +1,14 @@
 package realestate;
 import user.Buyer;
+
+
+/**
+ * The `Bid` class represents a bid on a real estate property.
+ * It includes information such as the bidder and the bid amount.
+ *
+ * @author SBAI Aymane
+ * */
+
 public class Bid {
     private Buyer bidder;
     private float amount;

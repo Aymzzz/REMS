@@ -6,6 +6,14 @@ import java.util.List;
 import user.Owner;
 import user.Renter;
 
+/**
+ * Represents a real estate property.
+ * This class inherits from RealEstate class
+ * It is dedicated for all the properties that are for rent
+ *
+ * @author SBAI Aymane
+ */
+
 public class RealEstateForRent extends RealEstate{
     private Date startDate;
     private Date endDate;

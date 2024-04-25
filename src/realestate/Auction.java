@@ -3,6 +3,15 @@ import user.Buyer;
 import java.util.ArrayList;
 import java.util.Date;
 
+
+/**
+ * The `Auction` class represents an auction sale type for real estate properties.
+ * It includes information such as the starting price, the current price, the auction deadline,
+ * and a list of bids made during the auction. The class provides methods to manage and retrieve
+ * the auction details and bids, as well as methods to declare the winner of the auction.
+ * 
+ * Author: SBAI Aymane
+ */
 public class Auction extends SaleType {
     private float startingPrice;
     private float currentPrice;
@@ -48,6 +57,11 @@ public class Auction extends SaleType {
         return bids;
     }
 
+    /**
+     * Displays the list of bids with bidder names and bid amounts.
+     *
+     * @param bids The list of bids to be displayed.
+     */
     public void displayBids(ArrayList<Bid> bids) {
         for (int i = 0; i < bids.size(); i++) {
             System.out.println(bids.get(i).getBidder().getName() + " bid " + bids.get(i).getAmount());
@@ -57,7 +71,12 @@ public class Auction extends SaleType {
     public void addBid(Bid bid) {
         this.bids.add(bid);
     }
-
+    
+    /**
+     * Declares the winner of the auction based on the highest bid.
+     *
+     * @return The winner of the auction (Buyer object).
+     */
     public Buyer declareWinner() {
         float maxBid = 0;
         Buyer winner = null;
