@@ -8,6 +8,7 @@ public class Manager extends User {
     
     public Manager(int id, String name, int age, String email, String phone) {
         super(id, name, age, email, phone);
+        this.realEstates = new ArrayList<>(); // to initialize the list
     }
 
     private List<RealEstate> realEstates;
