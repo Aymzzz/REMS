@@ -98,8 +98,4 @@ public class Renter extends User {
             System.out.println("No booking found for property ID " + propertyID);
         }
 }
-
-    public enum RenterType {
-        Worker, Student;
-    }
 }
