@@ -6,8 +6,16 @@ public class Buyer extends User {
 
     public Buyer(int id, String name, int age, String email, String phone, double budget, String amount) {
         super(id, name, age, email, phone);
+        this.budget = budget;
     }
-    public void placeBid() {
+    
+     public void placeBid(double bidAmount) {
+        if (bidAmount <= budget) {
+            System.out.println("Bid placed for $" + bidAmount);
+            pendingPaymentAmount = bidAmount; // Set pending amount to the bid amount, assuming the bid wins
+        } else {
+            System.out.println("Bid amount exceeds budget.");
+        }
     }
 
     
