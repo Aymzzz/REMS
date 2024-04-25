@@ -22,16 +22,16 @@ public class RealEstateForSale extends RealEstate {
      * Constructs a new instance of {@link RealEstateForSale}.
      *
      * @param id                 The unique identifier for the real estate property.
-     * @param type                The type of the real estate property.
      * @param owner               The owner of the real estate property.
      * @param comments            A list of comments related to the real estate property.
      * @param location            The location of the real estate property.
      * @param price               The price of the real estate property.
+     * @param units               The units in the real estate property
      * @param isBuyNow            A boolean indicating whether the property is for immediate sale.
      */
-    public RealEstateForSale(int id, String type, Owner owner, ArrayList<Comment> comments, String location,
-                               double price, boolean isBuyNow) {
-        super(id, location, owner, comments, location, price);
+    public RealEstateForSale(String name,int id, Owner owner, ArrayList<Comment> comments, String location,
+                               double price,Unit[] units, boolean isBuyNow) {
+        super(name, id, owner, comments, location, price, units);
         this.isBuyNow = isBuyNow;
     }
 
