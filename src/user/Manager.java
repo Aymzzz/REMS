@@ -25,6 +25,17 @@ public class Manager extends User {
     }
 
     public void assignHouseKeeper(User name) {
-
+         if (housekeeper instanceof Housekeeper) {
+            Housekeeper hk = (Housekeeper) housekeeper;
+            if (realEstates.contains(realEstate)) {
+                hk.setAssignedBuilding(realEstate);
+                System.out.println("Housekeeper " + hk.getName() + " assigned to clean " + realEstate.getName());
+            } else {
+                System.out.println("This manager does not manage the specified real estate.");
+            }
+        } else {
+            System.out.println("Only housekeepers can be assigned to clean buildings.");
+        }
+    }
     }
 }
