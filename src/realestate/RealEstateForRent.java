@@ -1,6 +1,7 @@
 package realestate;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import user.Owner;
@@ -20,8 +21,8 @@ public class RealEstateForRent extends RealEstate{
     private List<Renter> renters;  
     private RentalStatus status;
 
-    public RealEstateForRent(int id, String type, Owner owner, List<Comment> comments, String location, double price, Date startDate, Date endDate, List<Renter> renters, RentalStatus status, RealEstateType reType) {
-        super(id, location, owner, null, location, price);
+    public RealEstateForRent(String name, int id, String type, Owner owner, ArrayList<Comment> comments, String location, double price, Unit[] units, Date startDate, Date endDate, List<Renter> renters, RentalStatus status) {
+        super(name, id, owner, comments, location, price, units);
         this.startDate = startDate;
         this.endDate = endDate;
         this.renters = renters;
@@ -73,9 +74,6 @@ public class RealEstateForRent extends RealEstate{
         Available, Rented;
     }
 
-    public enum RealEstateType{
-        Commercial, Residential;
-    }
 
     public String toString(){
         return "Real estate for rent: " + startDate + ", endDate=" + endDate + ", renters=" + renters + ", status=" + status + "cost = " + getPrice();
