@@ -23,9 +23,12 @@ public class Owner extends User {
         return ownedRealEstate;
     }
 
-    public void addRealEstate(RealEstate realEstate) {
-        if (realEstate != null) {
+   public void addRealEstate(RealEstate realEstate) {
+        if (realEstate != null && !ownedRealEstate.contains(realEstate)) {
             ownedRealEstate.add(realEstate);
+            System.out.println("Real estate added to your properties.");
+        } else {
+            System.out.println("This real estate is already added or is null.");
         }
     }
 }
