@@ -156,49 +156,49 @@ public class App {
         scanner.close();
                                 
         
-        // This part was done by SBAI Aymane to test my part of the project.
-        Comment comment1 = new Comment(1, 1, 1, "This is an interesting property!");
-        Comment comment2 = new Comment(2, 2, 2, "I agree, it's perfect for my needs!");
-        Comment comment3 = new Comment(3, 3, 3, "Nah mid");
+        // // This part was done by SBAI Aymane to test my part of the project. - DISREGARD UNLESS TRYING TO CHECK THE VALIDITY OF THE CODE!
+        // Comment comment1 = new Comment(1, 1, 1, "This is an interesting property!");
+        // Comment comment2 = new Comment(2, 2, 2, "I agree, it's perfect for my needs!");
+        // Comment comment3 = new Comment(3, 3, 3, "Nah mid");
 
-        // creating a new BuyNow sale type
-        BuyNow buyNowSaleType = new BuyNow(100000.0f, new user.Buyer(0, "name", 50, null, null, 0, null));
+        // // creating a new BuyNow sale type
+        // BuyNow buyNowSaleType = new BuyNow(100000.0f, new user.Buyer(0, "name", 50, null, null, 0, null));
 
-        //posting a comment on the property
-        comment1.postComment("Welcome to the property discussion");
+        // //posting a comment on the property
+        // comment1.postComment("Welcome to the property discussion");
 
-        //replying to the comment
-        comment2.reply(comment1, "Thanks for sharing your thoughts man");
-        comment3.reply(comment2, "You're welcome!");
+        // //replying to the comment
+        // comment2.reply(comment1, "Thanks for sharing your thoughts man");
+        // comment3.reply(comment2, "You're welcome!");
 
-        //Prints the comments and replies
-        System.out.println("Comment 1: " + comment1.getContent());
-        System.out.println("Comment 2: " + comment2.getContent());
-        System.out.println("Comment 3: " + comment3.getContent());
+        // //Prints the comments and replies
+        // System.out.println("Comment 1: " + comment1.getContent());
+        // System.out.println("Comment 2: " + comment2.getContent());
+        // System.out.println("Comment 3: " + comment3.getContent());
 
-        //Printing  the replies
-        System.out.println("Replies to Comment 1:");
-        for (Comment reply : comment1.getReplies()) {
-            System.out.println("- " + reply.getContent());
-        }
+        // //Printing  the replies
+        // System.out.println("Replies to Comment 1:");
+        // for (Comment reply : comment1.getReplies()) {
+        //     System.out.println("- " + reply.getContent());
+        // }
 
-        //Printing the replies to the replies - using the collections
-        System.out.println("Replies to Comment 2:");
-        for (Comment reply : comment2.getReplies()) {
-            System.out.println("- " + reply.getContent());
-        }
+        // //Printing the replies to the replies - using the collections
+        // System.out.println("Replies to Comment 2:");
+        // for (Comment reply : comment2.getReplies()) {
+        //     System.out.println("- " + reply.getContent());
+        // }
 
-        //Printing the replies to the replies to the replies
-        System.out.println("Replies to Comment 3:");
-        for (Comment reply : comment3.getReplies()) {
-            System.out.println("- " + reply.getContent());
-        }
+        // //Printing the replies to the replies to the replies
+        // System.out.println("Replies to Comment 3:");
+        // for (Comment reply : comment3.getReplies()) {
+        //     System.out.println("- " + reply.getContent());
+        // }
 
-        //prints the BuyNow sale type details for better understanding
-        System.out.println("BuyNow Sale Type Details:");
-        System.out.println("Price: " + buyNowSaleType.getPrice());
-        System.out.println("Buyer: " + buyNowSaleType.getBuyer().getName());
-        System.out.println("Buyer's Email: " + buyNowSaleType.getBuyer().getEmail());
+        // //prints the BuyNow sale type details for better understanding
+        // System.out.println("BuyNow Sale Type Details:");
+        // System.out.println("Price: " + buyNowSaleType.getPrice());
+        // System.out.println("Buyer: " + buyNowSaleType.getBuyer().getName());
+        // System.out.println("Buyer's Email: " + buyNowSaleType.getBuyer().getEmail());
     }
             }
         }
