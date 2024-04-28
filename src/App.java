@@ -1,23 +1,22 @@
-import realestate.Comment;
-import user.Account;
-import user.User;
-
+import realestate.*;
+import user.*;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
-import java.util.List;
 import java.util.Scanner;
 
-import realestate.BuyNow;
-
 public class App {
-    private static List<User> users = new ArrayList<>();
+    private static ArrayList<Account> accounts = new ArrayList<>();
     private static User currentUser;
+    
+    private static ArrayList<RealEstate> realEstates = null;
     public static void main(String[] args) {
         
         Scanner scanner = new Scanner(System.in);
         Account currentAccount = null;
-        boolean exit = false; 
+        boolean exit = false;
+        int choice;
         while (!exit) {
+            if (currentAccount == null){
             System.out.println("\n===== Real Estate Management System Menu =====");
             System.out.println("1. Login");
             System.out.println("2. Sign Up");
@@ -25,7 +24,6 @@ public class App {
             System.out.println("=============================================");
             System.out.print("Enter the number corresponding to what you want to perform: ");
 
-            int choice; 
             
             try {
                 choice = scanner.nextInt();
@@ -35,43 +33,26 @@ public class App {
             }
             switch(choice){
                 case 1:
-                    if (currentAccount != null) {
-                        System.out.println("You are already logged in as " + currentAccount.getUsername());
-                    }
-                    else {
                         System.out.print("Enter username: ");
-                        String username = scanner.nextLine();
-                        // Search for the user in the ArrayList based on username
-                        User foundUser = null;
-                        for (User user : users) {
-                            if (user.getName().equals(username)) {
-                                foundUser = user;
-                                break;
-                            }
-                        }
-                        if (foundUser != null) {
-                            System.out.print("Enter password: ");
-                            String password = scanner.nextLine();
-
-                            // Perform login operation
-                            if (foundUser.login(password)) {
-                                System.out.println("Login successful. Welcome, " + foundUser.getName() + "!");
-                                currentUser = foundUser;
-                            } else {
-                                System.out.println("Invalid password. Please try again.");
-                            }
-                        } else {
-                            System.out.println("User '" + username + "' not found. Please sign up.");
-                        }
-                    }
-                    break;
+                        String Username = scanner.nextLine();
+                        System.out.print("Enter password: ");
+                        String Password = scanner.nextLine();
+                        currentAccount.login(Username, Password);
+                        currentUser = new User(0, null, 0, null, null, currentAccount);
+                        break;
                     case 2:
                     if (currentUser != null) {
                         System.out.println("Please log out before creating a new account.");
                     } else {
-                        Account newAccount = new Account(null, null);
-                        newAccount.signUp();
-                        users.add(new User(newAccount.getUsername(), null, null, 0));
+                        currentAccount = new Account(null, null);
+                        System.out.print("Enter username: ");
+                        String regUsername = scanner.nextLine();
+                        System.out.print("Enter password: ");
+                        String regPassword = scanner.nextLine();
+                        currentAccount.signUp(regUsername, regPassword);
+                        accounts.add(currentAccount);
+                        currentUser = new User(0, null, 0, null, null, currentAccount);
+                        
                     }
                     break;
                 case 3:
@@ -82,6 +63,95 @@ public class App {
                     System.out.println("Invalid choice. Please try again.");
                     break;
             }
+            }
+            else {
+                boolean exit1=false;
+                while(!exit1){
+                System.out.println("\n===== Real Estate Management System Menu =====");
+                System.out.println("1. Search");
+                System.out.println("2. Manage Real Estate (for Managers only!!!)");
+                System.out.println("3. Exit");
+                System.out.println("=============================================");
+                System.out.print("Enter the number corresponding to what you want to perform: "); 
+            
+            try {
+                choice = scanner.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a number.");
+                continue;
+            }
+            switch(choice){
+                case 1:
+                    System.out.println("Please enter the name of the property you are looking for.\nType 0 if you don't want to specify:");
+                    String name = scanner.nextLine();
+                    System.out.println("Please enter your minimum price.\n Type 0 if you prefer not to specify:");
+                    double minPrice = scanner.nextDouble();
+                    System.out.println("Please enter your maximum price.\n Type 0 if you prefer not to specify:");
+                    double maxPrice = scanner.nextDouble();
+                    System.out.println("Please enter your desired location.\nType 0 if you prefer not to specify:");
+                    String location = scanner.nextLine();
+                    ArrayList<RealEstate> foundRealEstates = RealEstateAgency.search(realEstates, name, minPrice, maxPrice, location);
+                    System.out.println("Do you want to sort them by price?\nType 1 if yes, 0 if no:");
+                    int sortingchoice = scanner.nextInt();
+                    if(sortingchoice==1) RealEstateAgency.sortRealEstates(foundRealEstates);
+                    RealEstateAgency.displayRealEstates(foundRealEstates);
+                case 2:
+                    if(currentUser instanceof Manager){
+                        boolean exit2=false;
+                    while(!exit2){
+                        System.out.println("\n===== Real Estate Management System Menu =====");
+                        System.out.println("1. Add a new real estate property to the system:");
+                        System.out.println("2. Remove a real estate property from the system ");
+                        System.out.println("3. Exit");
+                        System.out.println("=============================================");
+                        System.out.print("Enter the number corresponding to what you want to perform: "); 
+            
+                        try {
+                            choice = scanner.nextInt();
+                        } catch (InputMismatchException e) {
+                            System.out.println("Invalid input. Please enter a number.");
+                            continue;
+                        }
+                        switch(choice){
+                            case 1: 
+                                System.out.println("Please enter the name of the property you want to add.\n");
+                                name = scanner.nextLine();
+                                System.out.println("Please enter the price.\n");
+                                double price = scanner.nextDouble();
+                                System.out.println("Please enter the location.\n");
+                                location = scanner.nextLine();
+                                RealEstate r = new RealEstate(name, location, price);
+                                RealEstateAgency.addRealEstate(r);
+                            case 2: 
+                                System.out.println("Please enter the name of the property you want to remove.\n");
+                                name = scanner.nextLine();
+                                System.out.println("Please enter the price.\n");
+                                price = scanner.nextDouble();
+                                System.out.println("Please enter the location.\n");
+                                location = scanner.nextLine();
+                                r = new RealEstate(name, location, price);
+                                RealEstateAgency.removeRealEstate(r);
+                            case 3:
+                                exit2=true;
+                                break;
+                            default:
+                                System.out.println("Invalid choice. Please try again.");
+                                break;    
+                        }
+                    }
+                    }
+                    else{
+                        System.out.println("Access denied!!!");
+                    }
+                    
+                case 3:
+                    exit1=true;
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+                    break;    
+                
+           }
         }
         scanner.close();
                                 
@@ -130,4 +200,6 @@ public class App {
         System.out.println("Buyer: " + buyNowSaleType.getBuyer().getName());
         System.out.println("Buyer's Email: " + buyNowSaleType.getBuyer().getEmail());
     }
-}
+            }
+        }
+    }
