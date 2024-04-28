@@ -1,5 +1,9 @@
 package user;
-
+/**
+ * Represents a buyer and the functionalities he has 
+ * 
+ * @author Hiba
+ */
 public class Buyer extends User {
     private double budget;
     private double paymentAmount = 0.0; 
