@@ -23,7 +23,6 @@ The system has a menu-driven interface with the following options:
 * Login
 * Sign Up
 * Search for properties
-* Manage real estate properties (for managers only)
 * Exit
 
 **Implementation**
