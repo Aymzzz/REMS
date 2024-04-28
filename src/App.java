@@ -256,6 +256,74 @@ public class App {
     
          
          */
+       /* // Added by Hiba Aouahchi to create a list of users
+        List<User> users = new ArrayList<>();
+
+        // Create accounts for users
+        Account account1 = new Account("hiba", "password1");
+        Account account2 = new Account("alien", "password2");
+
+        // Create users with associated accounts
+        User user1 = new User(1, "kacy", 30, "email1", "123456", account1);
+        User user2 = new User(2, "Alice", 25, "email2", "654321", account2);
+
+        // Test sign up
+        account1.signUp("user1", "password1");
+        account2.signUp("user2", "password2");
+
+        // Test login
+        account1.login("user1", "password1");
+        account2.login("user2", "password2");
+        account1.login("user3", "password3"); // Login with non-existing user
+
+        // Test logout
+        account1.logout();
+
+        
+        // Test viewProfile and updateProfile
+        user1.viewProfile();
+        user1.updateProfile("John smith", 35, "john@gmaim.com", "789012");
+        user1.viewProfile();
+        
+        // Test updateName, updateAge, updateEmail, and updatePhoneNumber
+        user1.updateName();
+        user1.updateAge();
+        user1.updateEmail();
+        user1.updatePhoneNumber();
+        
+        // Test deleteAccount
+        user2.deleteAccount();
+        
+        // Test sendMessage
+        user1.sendMessage("Hello, Alice!");
+        
+        // Test retrieveUserInfo
+        user1.retrieveUserInfo();
+        
+        // Test browseProperties
+        System.out.println("User 1 is browsing properties: " + user1.browseProperties());
+        
+        // Test viewPropertyDetails
+        user1.viewPropertyDetails(101);
+        
+        // Test bookmarkProperty
+        user1.bookmarkProperty(101);
+        
+        // Test contactOwner
+        user1.contactOwner(101, "I'm interested in your property.");
+        
+        // Test addComment
+        Comment comment = new Comment(1, 1, 101, "This is a great property!");
+        user1.addComment(comment);
+        
+        // Test likeProperty and dislikeProperty
+        user1.likeProperty(101);
+        user1.dislikeProperty(102);
+        
+        // Test viewLikedProperties and viewDislikedProperties
+        user1.viewLikedProperties();
+        user1.viewDislikedProperties();
+        */
     System.exit(0);
     }
 }
