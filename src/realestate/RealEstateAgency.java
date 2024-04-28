@@ -20,12 +20,12 @@ import user.User;
  * @author Badr
  */
 public class RealEstateAgency implements Serializable{
-    private ArrayList<RealEstate> realEstates;
-    private ArrayList<Manager> managers;
-    private ArrayList<HouseKeeper> houseKeepers;
-    private ArrayList<Contractor> contractors;
-    private ArrayList<Comment> comments;
-    private ArrayList<User> users;
+    private static ArrayList<RealEstate> realEstates;
+    private static ArrayList<Manager> managers;
+    private static ArrayList<HouseKeeper> houseKeepers;
+    private static ArrayList<Contractor> contractors;
+    private static ArrayList<Comment> comments;
+    private static ArrayList<User> users;
 
     /**
      *
@@ -111,16 +111,20 @@ public class RealEstateAgency implements Serializable{
      *
      * @param newRealEstate
      */
-    public void addRealEstate(RealEstate newRealEstate) {
+    public static void addRealEstate(RealEstate newRealEstate) {
         realEstates.add(newRealEstate);
+        System.out.println("New real estate added successfully!");
     }
 
     /**
      *
      * @param realEstateToRemove
      */
-    public void removeRealEstate(RealEstate realEstateToRemove) {
-        realEstates.removeIf(realEstate -> realEstate.equals(realEstateToRemove));
+    public static void removeRealEstate(RealEstate realEstateToRemove) {
+        boolean t = realEstates.removeIf(realEstate -> realEstate.equals(realEstateToRemove));
+        
+       if(t == true) System.out.println("Real estate removed successfully!");
+       else System.out.println("No corresponding real estate property was found");
     }
 
     /**
@@ -129,7 +133,7 @@ public class RealEstateAgency implements Serializable{
      * @throws IOException
      */
     public void saveRealEstates() throws FileNotFoundException, IOException{
-        FileOutputStream f = new FileOutputStream("realestate.ser");
+        FileOutputStream f = new FileOutputStream("realestates.ser");
         ObjectOutputStream out = new ObjectOutputStream(f);
         out.writeObject(realEstates);
         out.close();
@@ -145,7 +149,7 @@ public class RealEstateAgency implements Serializable{
      * @throws ClassNotFoundException
      */
     public ArrayList<RealEstate> loadRealEstates() throws FileNotFoundException, IOException, ClassNotFoundException{
-        FileInputStream fin = new FileInputStream("realestate.ser");
+        FileInputStream fin = new FileInputStream("realestates.ser");
         ObjectInputStream in = new ObjectInputStream(fin);
         @SuppressWarnings("unchecked")
         ArrayList<RealEstate> realestates = (ArrayList<RealEstate>)in.readObject();
@@ -157,46 +161,49 @@ public class RealEstateAgency implements Serializable{
     /**
      *
      * @param realEstates
-     * @param RealEstateType
+     * @param name
      * @param minPrice
      * @param maxPrice
      * @param location
      * @return foundRealEstate
      * @throws RuntimeException
      */
-    public RealEstate search(ArrayList<RealEstate> realEstates, String name, double minPrice, double maxPrice, String location) throws RuntimeException {
-    RealEstate foundRealEstate = null;
+    public static ArrayList<RealEstate> search(ArrayList<RealEstate> realEstates, String name, double minPrice, double maxPrice, String location) throws RuntimeException {
+    ArrayList<RealEstate> foundRealEstates = null;
 
     for (RealEstate realEstate : realEstates) {
-        if (name != null && !name.equals(realEstate.getName())) {
-            throw new RuntimeException("Invalid real estate type: " + name);
+        if(realEstate.getName().contains(name)){
+            foundRealEstates.add(realEstate);
+        } 
+        if(realEstate.getPrice()<= maxPrice && realEstate.getPrice()>= minPrice){
+            if(maxPrice == 0){maxPrice = 1000000000;}
+            foundRealEstates.add(realEstate);
         }
-
-        if (minPrice > realEstate.getPrice() || maxPrice < realEstate.getPrice()) {
-            throw new RuntimeException("Invalid price range: [" + minPrice + ", " + maxPrice + "]");
+        if(realEstate.getLocation().contains(location)){
+            foundRealEstates.add(realEstate);
         }
-
-        if (location != null && !location.equals(realEstate.getLocation())) {
-            throw new RuntimeException("Invalid location: " + location);
-        }
-
-        foundRealEstate = realEstate;
-        break;
+        
+    }
+    if(name.equals("0") && location.equals("0") && minPrice == 0 && maxPrice == 0){
+        foundRealEstates = realEstates;
     }
 
-    if (foundRealEstate == null) {
-        throw new RuntimeException("Real estate not found");
+    if (foundRealEstates == null) {
+        throw new RuntimeException("No corresponding real estates found!");
     }
-
-    return foundRealEstate;
+    return foundRealEstates;
 }
-
+    public static void displayRealEstates(ArrayList<RealEstate> realestates){
+        for (RealEstate e: realestates){
+            System.out.println(e.toString());
+        }
+    }
     /**
      *
      * @param realestates
      * @return
      */
-    public ArrayList<RealEstate> sortRealEstates(ArrayList<RealEstate> realestates) {
+    public static ArrayList<RealEstate> sortRealEstates(ArrayList<RealEstate> realestates) {
     Collections.sort(realestates, (RealEstate o1, RealEstate o2) -> Double.compare(o1.getPrice(), o2.getPrice()));
     return realestates;
 }
@@ -242,4 +249,5 @@ public String toString() {
     return sb.toString();
 }
 }
+
 
