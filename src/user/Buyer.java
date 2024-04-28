@@ -2,31 +2,26 @@ package user;
 
 public class Buyer extends User {
     private double budget;
-    private String amount;
 
-    public Buyer(int id, String name, int age, String email, String phone, double budget, String amount) {
+    public Buyer(int id, String name, int age, String email, String phone, double budget) {
         super(id, name, age, email, phone);
         this.budget = budget;
     }
-    
-     public void placeBid(double bidAmount) {
+
+    public void placeBid(double bidAmount) {
         if (bidAmount <= budget) {
             System.out.println("Bid placed for $" + bidAmount);
-            pendingPaymentAmount = bidAmount; // Set pending amount to the bid amount, assuming the bid wins
+            // Pending payment logic should be implemented if required
         } else {
             System.out.println("Bid amount exceeds budget.");
         }
     }
 
-    
-    /** 
-     * @return double
-     */
     public double getBudget() {
         return budget;
     }
 
-    public void buyProperty() {
+    public void buyProperty(double pendingPaymentAmount) {
         if (pendingPaymentAmount > 0 && pendingPaymentAmount <= budget) {
             System.out.println("Attempting to buy property for $" + pendingPaymentAmount);
             proceedPayment(pendingPaymentAmount);
@@ -35,9 +30,7 @@ public class Buyer extends User {
         }
     }
 
-
-    public void proceedPayment() {
-
-         System.out.println("Payment of $" + amount + " processed.");
+    private void proceedPayment(double amount) {
+        System.out.println("Payment of $" + amount + " processed.");
     }
 }
