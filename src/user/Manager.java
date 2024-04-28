@@ -1,22 +1,17 @@
 package user;
 
 import java.util.List;
-
+import java.util.ArrayList;
 import realestate.RealEstate;
 
 public class Manager extends User {
-    
-    public Manager(int id, String name, int age, String email, String phone) {
-        super(id, name, age, email, phone);
-        this.realEstates = new ArrayList<>(); // to initialize the list
-    }
-
     private List<RealEstate> realEstates;
 
-    
-    /** 
-     * @return List<RealEstate>
-     */
+    public Manager(int id, String name, int age, String email, String phone) {
+        super(id, name, age, email, phone);
+        realEstates = new ArrayList<>();
+    }
+
     public List<RealEstate> getRealEstates() {
         return realEstates;
     }
@@ -25,19 +20,13 @@ public class Manager extends User {
         this.realEstates = realEstates;
     }
 
-    public void assignHouseKeeper(User name) {
-         if (housekeeper instanceof Housekeeper) {
-            Housekeeper hk = (Housekeeper) housekeeper;
-            if (realEstates.contains(realEstate)) {
-                hk.setAssignedBuilding(realEstate);
-                System.out.println("Housekeeper " + hk.getName() + " assigned to clean " + realEstate.getName());
-            } else {
-                System.out.println("This manager does not manage the specified real estate.");
-            }
+    public void assignHouseKeeper(HouseKeeper housekeeper, RealEstate realEstate) {
+        if (realEstates.contains(realEstate)) {
+            housekeeper.setAssignedBuilding(realEstate);
+            System.out.println("Housekeeper " + housekeeper.getName() + " assigned to clean " + realEstate.getName());
         } else {
-            System.out.println("Only housekeepers can be assigned to clean buildings.");
+            System.out.println("This manager does not manage the specified real estate.");
         }
-    }
     }
 
     public void addRealEstate(RealEstate realEstate) {
